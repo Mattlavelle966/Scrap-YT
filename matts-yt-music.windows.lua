@@ -13,13 +13,13 @@ print(Header)
 io.write("Please Enter your channel tag, it starts @. please enter: ")
 local userPlaylists   = {}
 local userInput = io.read()
-local data = io.popen("yt-dlp -q --flat-playlist --print \"%(title)s - %(webpage_url)s\" \"https://www.youtube.com/"..userInput.."/playlists\"")
+local data = io.popen("yt-dlp -q --flat-playlist --print \"%(title)s ~ %(webpage_url)s\" \"https://www.youtube.com/"..userInput.."/playlists\"")
 print("command execution complete")
 local processedData = data:read("*a") 
 print(processedData)
 data:close()
 for line in string.gmatch(processedData, '([^\n]+)' ) do
-	local title, url = line:match("^(.-)-(.*)$")
+	local title, url = line:match("^(.-)~(.*)$")
 	--print("T:"..title)
 	--print("U:"..url)
 	if title and url then
